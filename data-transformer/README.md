@@ -8,7 +8,7 @@ This application reads user data from JSON files, transforms it into a standardi
 
 ## Requirements Met
 
-### ✅ Core Functionality
+### ✅ Functional Requirements
 - **Data Reading**: Efficiently reads user data from multiple JSON files
 - **Data Transformation**: Transforms raw user data into the required structured format
 - **Data Storage**: Outputs transformed data as JSON files formatted for database loading
