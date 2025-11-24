@@ -30,10 +30,9 @@ The application transforms user data into the following structure:
   "is_enabled": true,
   "first_name": "John",
   "last_name": "Doe",
-  "signInActivity": {
-    "lastSignInDateTime": "2024-01-15T10:30:00Z",
-    "lastSuccessfulSignInDateTime": "2024-01-15T10:30:00Z"
-  }
+  "lastSignInDateTime": "2024-01-15T10:30:00Z",
+  "lastSuccessfulSignInDateTime": "2024-01-15T10:30:00Z",
+  "lastNonInteractiveSignInDateTime": "2024-01-15T10:30:00Z"
 }
 ```
 
@@ -141,16 +140,17 @@ pipeline.queue.capacity=100           # Task queue capacity
 pipeline.batch.size=1000              # Records per batch
 ```
 
-### signInActivity Structure
+### signInActivity Fields
 
-The `signInActivity` field is modeled as a **nested object** containing:
+The sign-in activity fields are now flattened at the root level:
 - `lastSignInDateTime`: ISO 8601 timestamp of last sign-in
 - `lastSuccessfulSignInDateTime`: ISO 8601 timestamp of last successful sign-in
+- `lastNonInteractiveSignInDateTime`: ISO 8601 timestamp of last non-interactive sign-in
 
 **Rationale:**
-- **Database-friendly**: Easily maps to relational database columns or NoSQL nested documents
-- **Queryable**: Enables efficient querying and indexing on sign-in timestamps
-- **Extensible**: Can add more sign-in related fields without breaking existing structure
+- **Database-friendly**: Flat structure is easier to insert into relational databases without JSON parsing
+- **Queryable**: Enables direct querying and indexing on sign-in timestamps
+- **Extensible**: Can add more sign-in related fields easily
 - **Null-safe**: Uses `@JsonInclude(JsonInclude.Include.NON_NULL)` to exclude null values
 
 ### Monitoring & Observability

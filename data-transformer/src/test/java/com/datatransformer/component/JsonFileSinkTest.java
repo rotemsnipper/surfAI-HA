@@ -25,7 +25,7 @@ class JsonFileSinkTest {
         Path outputFile = tempDir.resolve("output.json");
         TargetUser user = new TargetUser(
                 "1", "ext-1", "mail@example.com", "Member", "US", true, "First", "Last",
-                "2023-01-01", "2023-01-01");
+                "2023-01-01", "2023-01-01", "2023-01-01");
         Stream<TargetUser> userStream = Stream.of(user);
 
         // Act
@@ -43,7 +43,7 @@ class JsonFileSinkTest {
         // Arrange
         Path invalidPath = tempDir.resolve("non_existent_dir").resolve("output.json");
         TargetUser user = new TargetUser(
-                "1", "ext-1", "mail@example.com", "Member", "US", true, "First", "Last", null, null);
+                "1", "ext-1", "mail@example.com", "Member", "US", true, "First", "Last", null, null, null);
         Stream<TargetUser> userStream = Stream.of(user);
 
         // Act & Assert

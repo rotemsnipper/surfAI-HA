@@ -23,6 +23,7 @@ public class UserTransformer implements Transformer<RawUser, TargetUser> {
                 input.givenName(), // Mapped to first_name
                 input.surname(), // Mapped to last_name
                 signInActivity != null ? signInActivity.lastSignInDateTime() : null,
-                signInActivity != null ? signInActivity.lastSuccessfulSignInDateTime() : null);
+                signInActivity != null ? signInActivity.lastSuccessfulSignInDateTime() : null,
+                signInActivity != null ? signInActivity.lastNonInteractiveSignInDateTime() : null);
     }
 }
